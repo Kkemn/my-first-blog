@@ -15,6 +15,13 @@
                     <a href="{% url 'post_new' %}" class="top-menu">
                         {% include './icons/file-earmark-plus.svg' %}
                     </a>
+                    <a href="{% url 'post_draft_list' %}" class="top-menu">Drafts</span></a>
+                    <form method="POST" action="{% url 'logout' %}" class="top-menu">{% csrf_token %}
+                        <button type="submit" class="btn btn-secondary" name="logout">Logout</button>
+                    </form>
+                    <p class="top-menu">Hello {{ user.username }}</p>                    
+                {% else %}
+                    <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock">Login</span></a>
                 {% endif %}
                 <h1><a href="/">Django Girls Blog</a></h1>
             </div>
